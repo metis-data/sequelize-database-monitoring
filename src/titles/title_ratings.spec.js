@@ -19,11 +19,14 @@ describe('AppController (e2e)', function (){
   ];
 
   let app;
+  let models;
 
   before(async function() {
     this.timeout(0);
     startMetisInstrumentation();
     
+    models = require('../models');
+    await models.seedDatabase();
     app = require('../app');
   });
 

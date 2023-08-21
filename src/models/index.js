@@ -88,6 +88,26 @@ let models = [
   })();
 })();
 
+(function seed(){
+  db.seedDatabase = async () => {
+    let files = await fsPromises.readdir('src/models/migrations/');
+    for(let id in files) {
+      if(files[id].endsWith(".sql")){
+        let data = await fsPromises.readFile('src/models/migrations/' + files[id], 'utf8');
+        console.log("Running " + data);
+        try{
+          console.log(await sequelize.query(data));
+        }catch(e){
+          console.log(e);
+          throw e;
+        }
+      }
+    }
+
+    console.log("Done migrating");
+  };
+})();
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

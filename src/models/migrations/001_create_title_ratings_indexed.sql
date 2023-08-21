@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS title_ratings_index ON imdb.title_ratings(averagerating);
