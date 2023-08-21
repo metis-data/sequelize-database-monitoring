@@ -1,0 +1,23 @@
+{
+  "name": "node-sequelize",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./src/main",
+    "test": "mocha --recursive './src/**/*.spec.js'"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "supertest": "^6.1.3"
+  }
+}
