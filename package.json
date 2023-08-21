@@ -7,6 +7,14 @@
     "test": "mocha --recursive './src/**/*.spec.js'"
   },
   "dependencies": {
+    "@metis-data/pg-interceptor": "^2.3.27",
+    "@opentelemetry/api": "^1.4.1",
+    "@opentelemetry/context-async-hooks": "^1.15.2",
+    "@opentelemetry/instrumentation": "^0.41.2",
+    "@opentelemetry/instrumentation-http": "^0.41.2",
+    "@opentelemetry/resources": "^1.15.2",
+    "@opentelemetry/sdk-trace-base": "^1.15.2",
+    "@opentelemetry/semantic-conventions": "^1.15.2",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "debug": "^4.1.1",

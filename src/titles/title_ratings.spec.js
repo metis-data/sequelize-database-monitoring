@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { startMetisInstrumentation } = require('../tracer');
 const request = require('supertest');
 
 describe('AppController (e2e)', function (){
@@ -21,6 +22,7 @@ describe('AppController (e2e)', function (){
 
   before(async function() {
     this.timeout(0);
+    startMetisInstrumentation();
     
     app = require('../app');
   });
