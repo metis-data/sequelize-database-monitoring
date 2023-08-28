@@ -1,0 +1,19 @@
+name: Test application on Push
+run-name: Test application on Push
+on: [push]
+env:
+  METIS_SERVICE_NAME: sequelize_demo_github_push
+  METIS_SERVICE_VERSION: 1
+  DATABASE_URL: ${{ vars.DATABASE_URL }}
+  METIS_API_KEY: ${{ vars.METIS_API_KEY }}
+
+jobs:
+  Run-Tests-With-Metis-On-Push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Install modules
+        run: npm install
+      - name: Run tests
+        run: npm run test

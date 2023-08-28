@@ -1,0 +1,28 @@
+name: Test application on Pull Request
+run-name: Test application on Pull Request
+on: [pull_request]
+env:
+  METIS_SERVICE_NAME: sequelize_github
+  METIS_SERVICE_VERSION: 1
+  DATABASE_URL: ${{ vars.DATABASE_URL }}
+  METIS_API_KEY: ${{ vars.METIS_API_KEY }}
+  TOKEN_FOR_GITHUB_ACTION: ${{ secrets.PR_TOKEN_GITHUB }}
+
+jobs:
+  Run-Tests-With-Metis-On-Pull-Request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure metis PR
+        id: tag_pr
+        uses: metis-data/test-queries-analyzer@v1
+        with:
+          metis_api_key: ${{ vars.METIS_API_KEY }}
+          github_token: ${{ secrets.PR_TOKEN_GITHUB }}
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Install modules
+        run: npm install
+      - name: Run tests
+        env:
+          METIS_TAG_PR: ${{ steps.tag_pr.outputs.pr_tag  }}
+        run: npm run test
